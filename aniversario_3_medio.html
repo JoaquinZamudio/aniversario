@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Feliz Aniversario</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .lyrics {
+            display: none;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 127, 0.1);
+            border: 2px solid #ff69b4;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 30px #ff69b4, 0 0 60px #ff1493;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .container h1 {
+            color: white;
+            font-size: 3em;
+            text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4;
+            animation: pulse 2s infinite;
+        }
+
+        .container video {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff69b4;
+            margin-top: 20px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .floating-text,
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 1.5em;
+            animation: float 10s linear infinite;
+            opacity: 0.8;
+            user-select: none;
+        }
+
+        .heart {
+            font-size: 2em;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sticker {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 200px;
+            animation: bounce 3s infinite;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Nueva sección para la imagen de propuesta */
+        .proposal-image-container {
+            position: fixed;
+            bottom: 20px;
+            left: 80px;
+            z-index: 10;
+        }
+
+        .proposal-image {
+            width: 150px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px #ff69b4;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .proposal-image:hover {
+            box-shadow: 0 0 30px #ff1493;
+            transform: scale(1.1);
+        }
+
+        .proposal-tooltip {
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 20, 147, 0.85);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-size: 1em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            user-select: none;
+            box-shadow: 0 0 10px #ff1493;
+        }
+
+        .proposal-image-container:hover .proposal-tooltip {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor principal con texto y video -->
+    <div class="container">
+        <h1>!!Feliz Aniversario!!</h1>
+        <h1>Mi Niña Bonita ❤️</h1>
+        <video controls autoplay>
+            <source src="HASTA MI FINAL.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <!-- Sticker animado -->
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjN3NjFlOXJtYWtrYndhNjZldmtpNHFteDh4YW03YWdtamNpdmpkYiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/mCnJ7efbC9wwLzvljY/giphy.gif"
+        class="sticker" alt="Sticker bonito" />
+
+    <!-- Imagen propuesta con tooltip -->
+    <div class="proposal-image-container">
+        <img src="propuesta.jpg" alt="Propuesta" class="proposal-image" />
+        <div class="proposal-tooltip">
+            Eres la melodía 🎶<br>
+            que da vida a mis días ☀️,<br>
+            el verso eterno ✍️<br>
+            de nuestro amor infinito 💖.
+        </div>
+
+    </div>
+
+    <script>
+        function createFloatingElement(text, className) {
+            const el = document.createElement('div');
+            el.className = className;
+            el.innerText = text;
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = 5 + Math.random() * 10 + 's';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 15000);
+        }
+
+        setInterval(() => {
+            createFloatingElement('Te Amo 💖💖💖', 'floating-text');
+            createFloatingElement('❤️', 'heart');
+            createFloatingElement('💕', 'heart');
+        }, 500);
+    </script>
+</body>
+
+</html>
